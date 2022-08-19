@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/skarthikeyan96/find-spaces/compare/v1.0.0...v1.0.1) (2022-08-19)
+
+
+### Bug Fixes
+
+* add social icons ([a7e371a](https://github.com/skarthikeyan96/find-spaces/commit/a7e371ab40aa6955e6cbf478afc95dd922f5d559))
+
 ## 1.0.0 (2022-08-19)
 
 
