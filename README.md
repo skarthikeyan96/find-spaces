@@ -34,7 +34,7 @@ Go to the project directory
   cd find-spaces
 ```
 
-Install dependencies
+Install dependencies 
 
 ```bash
   npm install
@@ -49,12 +49,29 @@ Start the server
 
 
 
-## Tech Stack
+## Tech Stack 💻
 
 1. Next.js
 2. Typescript
 3. Tailwindcss
 4. Twitter API 
+
+## Features 🎉
+
+1. Search spaces based on people , topics and category.
+2. Add calendar reminder for the spaces. ( Supports Google calendar ) 
+3. Filter spaces based on the state. 
+
+## Upcoming 🚧
+
+1. Filter spaces by Date.
+2. Creators Leaderboard.
+3. Bookmarking the spaces. 
+4. Dark mode support.
+
+## Screenshots
+
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/23126394/185684904-45f831d9-bfe5-4311-8205-ba53106c0954.png">
 
 
 ## Authors
