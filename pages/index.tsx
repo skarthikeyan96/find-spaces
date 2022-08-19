@@ -15,9 +15,9 @@ import Loader from "../components/Loader";
 
 
 const baseUrl =
-  process.env.ENVIRONMENT === "development"
-    ? process.env.DEV_BASE_URL
-    : process.env.PROD_DOMAIN;
+  process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
+    ? process.env.NEXT_PUBLIC_DEV_BASE_URL
+    : process.env.NEXT_PUBLIC_PROD_DOMAIN;
 
 const Home: NextPage = (props: any) => {
   const [topic, setTopic] = useState("tech");
@@ -30,7 +30,7 @@ const Home: NextPage = (props: any) => {
     try {
       setLoading(true);
       const response = await fetch(
-        `http://localhost:3000/api/search?search=${topic}`
+        `${baseUrl}/api/search?search=${topic}`
       );
       const spacesApiResponse = await response.json();
 
@@ -54,7 +54,6 @@ const Home: NextPage = (props: any) => {
 
 
   const renderSpaces = () => {
-    console.log(spaces)
 
 
 
@@ -189,10 +188,9 @@ const Home: NextPage = (props: any) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const response = await fetch(`http://localhost:3000/api/search`);
+  const response = await fetch(`${baseUrl}/api/search`);
   const spaces = await response.json();
 
-  console.log(spaces)
   return {
     props: {
       spaces: spaces.data,
