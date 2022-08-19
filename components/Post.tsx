@@ -1,6 +1,6 @@
 import React from "react";
-import JoinSpaceButton from "./JoinSpaceButton";
-import AddToCalendar from "./AddToCalendar";
+import JoinSpaceButton from "@/components/JoinSpaceButton";
+import AddToCalendar from "@/components/AddToCalendar";
 import moment from "moment";
 
 const Post = ({ title, state, scheduledStart, id, topic, hosts }: any) => {
