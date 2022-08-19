@@ -1,14 +1,14 @@
 import type { GetServerSideProps, NextPage } from "next";
 
-import Layout from "../components/Layout";
-import Heading from "../components/Heading";
+import Layout from "@/components/Layout";
+import Heading from "@/components/Heading";
 import { useState } from "react";
-import Post from "../components/Post";
+import Post from "@/components/Post";
 import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
+import { Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 import { Listbox } from "@headlessui/react";
-import Loader from "../components/Loader";
+import Loader from "@/components/Loader";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
