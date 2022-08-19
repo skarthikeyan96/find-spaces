@@ -27,6 +27,7 @@ const Layout = ({ children }: Layout) => {
           <a
             className="font-bold   md:inline-block p-1 sm:px-3 sm:py-2  transition-all"
             href="https://twitter.com/karthik_coder"
+            target="_blank"
           >
             Twitter
           </a>
@@ -34,6 +35,7 @@ const Layout = ({ children }: Layout) => {
           <a
             className="font-bold   md:inline-block p-1 sm:px-3 sm:py-2  transition-all"
             href="https://github.com/skarthikeyan96/skarthikeyan96"
+            target="_blank"
           >
             Github
           </a>
