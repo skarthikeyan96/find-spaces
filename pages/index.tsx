@@ -57,7 +57,7 @@ const Home: NextPage = (props: any) => {
 
 
 
-    const isSpacesEmpty = spaces.length === 0;
+    const isSpacesEmpty = spaces && spaces.length === 0;
     const isLiveSpacesEmpty = getLiveSpaces(spaces).length === 0
 
     const isScheduledSpacesEmpty = getScheduledSpaces(spaces).length === 0
@@ -80,6 +80,20 @@ const Home: NextPage = (props: any) => {
     
     return spaces.map((space: any, index: number) => {
       if (space.state === selected.toLowerCase()) {
+
+
+        const hosts = space.host_ids;
+
+        const hostsUserProfile = [];
+
+        for(let i=0;i<hosts.length;i++){
+          // console.log(hosts)
+          const res = props.users.filter((user:any) => user.id === hosts[i] );
+          hostsUserProfile.push(res[0])
+
+        }
+        console.log(hostsUserProfile)
+
         return (
           <div key={index} className="pb-8">
             <Post
@@ -87,6 +101,7 @@ const Home: NextPage = (props: any) => {
               state={space.state}
               scheduledStart={space?.scheduled_start}
               id={space.id}
+              hosts={hostsUserProfile || []}
             ></Post>
           </div>
         );
@@ -114,11 +129,13 @@ const Home: NextPage = (props: any) => {
           border-gray-300
           shadow-sm
           focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+          placeholder:tracking-wide
          "
-          placeholder="search spaces"
+          placeholder="Find spaces"
         />
         <button
           className="px-6 py-1.5 border-2 border-gray-800 rounded ml-4"
+          disabled={topic.length === 0}
           onClick={handleSearch}
         >
           Search
