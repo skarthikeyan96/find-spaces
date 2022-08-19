@@ -8,7 +8,7 @@ const Post = ({ title, state, scheduledStart, id, topic, hosts }: any) => {
 
   const renderButtons = () => {
     if (state === "live") {
-      return <JoinSpaceButton />;
+      return <JoinSpaceButton id={id}/>;
     }
     return (
       <AddToCalendar title={title} scheduledStart={scheduledStart} id={id} />
