@@ -52,7 +52,7 @@ const Post = ({ title, state, scheduledStart, id, topic, hosts }: any) => {
 
           <div className="flex space-x-4">
             {renderButtons()}
-            <BookMarkButton />
+           
           </div>
         </div>
       </div>
