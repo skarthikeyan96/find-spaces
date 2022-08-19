@@ -1,27 +1,68 @@
-# Next.js + Tailwind CSS Example
+<h1 align="center" style="color:'linear-gradient(to right, rgb(236, 72, 153), rgb(239, 68, 68), rgb(234, 179, 8))'"> Find Spaces </h1>
+ 
+Application to search twitter spaces based on topics , names and also able to add reminder to the calendar
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
 
-## Deploy your own
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
 
-## How to use
+## Environment Variables
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+To run this project, you will need to add the following environment variables to your .env.local file
+
+`TWITTER_BEARER_TOKEN`
+
+`NEXT_PUBLIC_ENVIRONMENT`
+
+`NEXT_PUBLIC_DEV_BASE_URL`
+
+
+
+
+## Run Locally
+
+Clone the project
 
 ```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
+  git clone git@github.com:skarthikeyan96/find-spaces.git
 ```
+
+Go to the project directory
 
 ```bash
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
+  cd find-spaces
 ```
+
+Install dependencies
 
 ```bash
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
+  npm install
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Start the server
+
+```bash
+  npm run start
+```
+
+
+
+
+## Tech Stack
+
+1. Next.js
+2. Typescript
+3. Tailwindcss
+4. Twitter API 
+
+
+## Authors
+
+- [karthikeyan](https://www.github.com/skarthikeyan96)
+
+
+## Feedback
+
+If you have any feedback, please reach out [@karthik_coder](https://twitter.com/karthik_coder)
+
