@@ -6,13 +6,9 @@ import { useState } from "react";
 import Post from "../components/Post";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import {
-  CheckIcon,
-  SelectorIcon,
-} from "@heroicons/react/solid";
+import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 import { Listbox } from "@headlessui/react";
 import Loader from "../components/Loader";
-
 
 const baseUrl =
   process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
@@ -25,75 +21,88 @@ const Home: NextPage = (props: any) => {
   const [spaces, setSpaces] = useState(props.spaces || []);
   const [loading, setLoading] = useState(false);
 
+  const status = ["All", "Live", "Scheduled"];
+
+  const [selected, setSelected] = useState(status[0]);
 
   const handleSearch = async () => {
     try {
       setLoading(true);
-      const response = await fetch(
-        `${baseUrl}/api/search?search=${topic}`
-      );
+      const response = await fetch(`${baseUrl}/api/search?search=${topic}`);
       const spacesApiResponse = await response.json();
-
-      
-      setSpaces(spacesApiResponse.data);
+      setSpaces(spacesApiResponse);
       setLoading(false);
     } catch (e) {
       console.error(e);
-      setSpaces([])
+      setSpaces([]);
       setLoading(false);
     }
   };
 
-  const getLiveSpaces = (spaces:any) => {
-    return spaces.filter((space:any) => space.state === "live")
-  }
-
-  const getScheduledSpaces = (spaces:any) => {
-    return spaces.filter((space:any) => space.state === "scheduled")
-  }
-
-
   const renderSpaces = () => {
-
-
-
-    const isSpacesEmpty = spaces && spaces.length === 0;
-    const isLiveSpacesEmpty = getLiveSpaces(spaces).length === 0
-
-    const isScheduledSpacesEmpty = getScheduledSpaces(spaces).length === 0
-
-
-    const emptyStatusText = !isSpacesEmpty && isLiveSpacesEmpty ? "Live" : "Scheduled";
-
-    if(isSpacesEmpty){
-      // render empty
-      return(
-        <>
-        <p className="text-center"> {`Spaces not found for ${topic}`} </p>
-        </>
-      )
+    if (spaces.length === 0) {
+      return <p className="font-bold text-center"> Spaces not found 😔 </p>;
     }
 
-
-    // TODO : Need to handle the empty values for live and scheduled
-
-    
-    return spaces.map((space: any, index: number) => {
-      if (space.state === selected.toLowerCase()) {
+    const liveSpaces = spaces.filter((space: any) => space.state === "live");
+    const scheduledSpaces = spaces.filter(
+      (space: any) => space.state === "scheduled"
+    );
 
 
-        const hosts = space.host_ids;
+    if (selected.toLowerCase() === "live") {
+      if (liveSpaces.length === 0) {
+        return (
+          <p className="font-bold text-center">
+            {" "}
+            Live spaces for {topic} not found 😔{" "}
+          </p>
+        );
+      }
 
-        const hostsUserProfile = [];
+      return liveSpaces.map((space: any, liveSpaceIdx: number) => {
+        return (
+          <div key={liveSpaceIdx} className="pb-8">
+            <Post
+              title={space.title}
+              state={space.state}
+              scheduledStart={space?.scheduled_start}
+              id={space.id}
+              hosts={space.host_profile}
+            ></Post>
+          </div>
+        );
+      });
+    }
 
-        for(let i=0;i<hosts.length;i++){
-          // console.log(hosts)
-          const res = props.users.filter((user:any) => user.id === hosts[i] );
-          hostsUserProfile.push(res[0])
+    if (selected.toLowerCase() === "scheduled") {
+      if (scheduledSpaces.length === 0) {
+        return (
+          <p className="font-normal text-center">
+            {" "}
+            Live spaces for <span className="font-bold"> {topic} </span> not
+            found 😔{" "}
+          </p>
+        );
+      }
 
-        }
-        console.log(hostsUserProfile)
+      return scheduledSpaces.map((space: any, liveSpaceIdx: number) => {
+        return (
+          <div key={liveSpaceIdx} className="pb-8">
+            <Post
+              title={space.title}
+              state={space.state}
+              scheduledStart={space?.scheduled_start}
+              id={space.id}
+              hosts={space.host_profile}
+            ></Post>
+          </div>
+        );
+      });
+    }
 
+    if (selected.toLowerCase() === "all") {
+      return spaces?.map((space: any, index: number) => {
         return (
           <div key={index} className="pb-8">
             <Post
@@ -101,17 +110,13 @@ const Home: NextPage = (props: any) => {
               state={space.state}
               scheduledStart={space?.scheduled_start}
               id={space.id}
-              hosts={hostsUserProfile || []}
+              hosts={space.host_profile}
             ></Post>
           </div>
         );
-      }
-    });
+      });
+    }
   };
-
-  const status = ["Live", "Scheduled"];
-
-  const [selected, setSelected] = useState(status[0]);
 
   return (
     <Layout>
@@ -142,10 +147,10 @@ const Home: NextPage = (props: any) => {
         </button>
       </div>
 
-      <div className="pt-4">
+      <div className="pt-4 ml-auto mt-8">
         <Listbox value={selected} onChange={setSelected}>
           <div className="relative mt-1">
-            <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+            <Listbox.Button className="relative w-full cursor-default rounded bg-white py-2 pl-3 pr-10 text-left border-2 border-gray-800 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
               <span className="block truncate">{selected}</span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <SelectorIcon
@@ -194,10 +199,11 @@ const Home: NextPage = (props: any) => {
           </div>
         </Listbox>
       </div>
-      {
-        loading ? <Loader/> : <div className="pt-8 w-full">{renderSpaces()}</div>
-      }
-      
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="pt-8 w-full">{renderSpaces()}</div>
+      )}
     </Layout>
   );
 };
@@ -210,8 +216,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      spaces: spaces.data,
-      users: spaces.includes.users,
+      spaces: spaces,
     },
   };
 };
