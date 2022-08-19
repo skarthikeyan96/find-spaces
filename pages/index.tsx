@@ -9,6 +9,7 @@ import { Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 import { Listbox } from "@headlessui/react";
 import Loader from "@/components/Loader";
+import Head from "next/head";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
@@ -120,6 +121,10 @@ const Home: NextPage = (props: any) => {
 
   return (
     <Layout>
+      <Head>
+        <title>Home - Find Spaces</title>
+        <meta name="description" content="find spaces home page" />
+      </Head>
       <div>
         <Heading />
       </div>
