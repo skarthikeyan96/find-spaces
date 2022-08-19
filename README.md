@@ -1,6 +1,6 @@
-# Find Spaces
-
-Application to search spaces in twitter and also able to add reminder to the calendar
+<h1 align="center" style="color:'linear-gradient(to right, rgb(236, 72, 153), rgb(239, 68, 68), rgb(234, 179, 8))'"> Find Spaces </h1>
+ 
+Application to search twitter spaces based on topics , names and also able to add reminder to the calendar
 
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
