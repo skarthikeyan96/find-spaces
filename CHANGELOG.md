@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/skarthikeyan96/find-spaces/compare/v1.0.1...v1.0.2) (2022-08-19)
+
+
+### Bug Fixes
+
+* add _blank to open in new tab ([7b9e6a4](https://github.com/skarthikeyan96/find-spaces/commit/7b9e6a40c0e8e1a4034d42c5df3222b347f1fded))
+
 ## [1.0.1](https://github.com/skarthikeyan96/find-spaces/compare/v1.0.0...v1.0.1) (2022-08-19)
 
 
