@@ -68,6 +68,7 @@ Start the server
 2. Creators Leaderboard.
 3. Bookmarking the spaces. 
 4. Dark mode support.
+5. Feeback about the spaces.
 
 ## Screenshots
 
